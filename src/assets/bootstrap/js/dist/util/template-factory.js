@@ -1,13 +1,31 @@
 /*!
-  * Bootstrap template-factory.js v5.3.1 (https://getbootstrap.com/)
-  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
-  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-  */
+ * Bootstrap template-factory.js v5.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('../dom/selector-engine.js'), require('./config.js'), require('./sanitizer.js'), require('./index.js')) :
-  typeof define === 'function' && define.amd ? define(['../dom/selector-engine', './config', './sanitizer', './index'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.TemplateFactory = factory(global.SelectorEngine, global.Config, global.Sanitizer, global.Index));
-})(this, (function (SelectorEngine, Config, sanitizer_js, index_js) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined'
+    ? (module.exports = factory(
+        require('../dom/selector-engine.js'),
+        require('./config.js'),
+        require('./sanitizer.js'),
+        require('./index.js')
+      ))
+    : typeof define === 'function' && define.amd
+      ? define(
+          ['../dom/selector-engine', './config', './sanitizer', './index'],
+          factory
+        )
+      : ((global =
+          typeof globalThis !== 'undefined' ? globalThis : global || self),
+        (global.TemplateFactory = factory(
+          global.SelectorEngine,
+          global.Config,
+          global.Sanitizer,
+          global.Index
+        )));
+})(this, function (SelectorEngine, Config, sanitizer_js, index_js) {
+  'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -15,7 +33,6 @@
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
-
 
   /**
    * Constants
@@ -30,7 +47,7 @@
     html: false,
     sanitize: true,
     sanitizeFn: null,
-    template: '<div></div>'
+    template: '<div></div>',
   };
   const DefaultType = {
     allowList: 'object',
@@ -39,11 +56,11 @@
     html: 'boolean',
     sanitize: 'boolean',
     sanitizeFn: '(null|function)',
-    template: 'string'
+    template: 'string',
   };
   const DefaultContentType = {
     entry: '(string|element|function|null)',
-    selector: '(string|element)'
+    selector: '(string|element)',
   };
 
   /**
@@ -69,7 +86,9 @@
 
     // Public
     getContent() {
-      return Object.values(this._config.content).map(config => this._resolvePossibleFunction(config)).filter(Boolean);
+      return Object.values(this._config.content)
+        .map((config) => this._resolvePossibleFunction(config))
+        .filter(Boolean);
     }
     hasContent() {
       return this.getContent().length > 0;
@@ -78,7 +97,7 @@
       this._checkContent(content);
       this._config.content = {
         ...this._config.content,
-        ...content
+        ...content,
       };
       return this;
     }
@@ -103,10 +122,13 @@
     }
     _checkContent(arg) {
       for (const [selector, content] of Object.entries(arg)) {
-        super._typeCheckConfig({
-          selector,
-          entry: content
-        }, DefaultContentType);
+        super._typeCheckConfig(
+          {
+            selector,
+            entry: content,
+          },
+          DefaultContentType
+        );
       }
     }
     _setContent(template, content, selector) {
@@ -120,7 +142,10 @@
         return;
       }
       if (index_js.isElement(content)) {
-        this._putElementInTemplate(index_js.getElement(content), templateElement);
+        this._putElementInTemplate(
+          index_js.getElement(content),
+          templateElement
+        );
         return;
       }
       if (this._config.html) {
@@ -130,7 +155,13 @@
       templateElement.textContent = content;
     }
     _maybeSanitize(arg) {
-      return this._config.sanitize ? sanitizer_js.sanitizeHtml(arg, this._config.allowList, this._config.sanitizeFn) : arg;
+      return this._config.sanitize
+        ? sanitizer_js.sanitizeHtml(
+            arg,
+            this._config.allowList,
+            this._config.sanitizeFn
+          )
+        : arg;
     }
     _resolvePossibleFunction(arg) {
       return index_js.execute(arg, [this]);
@@ -146,6 +177,5 @@
   }
 
   return TemplateFactory;
-
-}));
+});
 //# sourceMappingURL=template-factory.js.map

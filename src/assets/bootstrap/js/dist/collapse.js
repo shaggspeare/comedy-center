@@ -1,13 +1,36 @@
 /*!
-  * Bootstrap collapse.js v5.3.1 (https://getbootstrap.com/)
-  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
-  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-  */
+ * Bootstrap collapse.js v5.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./base-component.js'), require('./dom/event-handler.js'), require('./dom/selector-engine.js'), require('./util')) :
-  typeof define === 'function' && define.amd ? define(['./base-component', './dom/event-handler', './dom/selector-engine', './util/index'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Collapse = factory(global.BaseComponent, global.EventHandler, global.SelectorEngine, global.Index));
-})(this, (function (BaseComponent, EventHandler, SelectorEngine, index_js) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined'
+    ? (module.exports = factory(
+        require('./base-component.js'),
+        require('./dom/event-handler.js'),
+        require('./dom/selector-engine.js'),
+        require('./util')
+      ))
+    : typeof define === 'function' && define.amd
+      ? define(
+          [
+            './base-component',
+            './dom/event-handler',
+            './dom/selector-engine',
+            './util/index',
+          ],
+          factory
+        )
+      : ((global =
+          typeof globalThis !== 'undefined' ? globalThis : global || self),
+        (global.Collapse = factory(
+          global.BaseComponent,
+          global.EventHandler,
+          global.SelectorEngine,
+          global.Index
+        )));
+})(this, function (BaseComponent, EventHandler, SelectorEngine, index_js) {
+  'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -15,7 +38,6 @@
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
-
 
   /**
    * Constants
@@ -42,11 +64,11 @@
   const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="collapse"]';
   const Default = {
     parent: null,
-    toggle: true
+    toggle: true,
   };
   const DefaultType = {
     parent: '(null|element)',
-    toggle: 'boolean'
+    toggle: 'boolean',
   };
 
   /**
@@ -61,7 +83,9 @@
       const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE);
       for (const elem of toggleList) {
         const selector = SelectorEngine.getSelectorFromElement(elem);
-        const filterElement = SelectorEngine.find(selector).filter(foundElement => foundElement === this._element);
+        const filterElement = SelectorEngine.find(selector).filter(
+          (foundElement) => foundElement === this._element
+        );
         if (selector !== null && filterElement.length) {
           this._triggerArray.push(elem);
         }
@@ -102,9 +126,13 @@
 
       // find active children
       if (this._config.parent) {
-        activeChildren = this._getFirstLevelChildren(SELECTOR_ACTIVES).filter(element => element !== this._element).map(element => Collapse.getOrCreateInstance(element, {
-          toggle: false
-        }));
+        activeChildren = this._getFirstLevelChildren(SELECTOR_ACTIVES)
+          .filter((element) => element !== this._element)
+          .map((element) =>
+            Collapse.getOrCreateInstance(element, {
+              toggle: false,
+            })
+          );
       }
       if (activeChildren.length && activeChildren[0]._isTransitioning) {
         return;
@@ -129,7 +157,8 @@
         this._element.style[dimension] = '';
         EventHandler.trigger(this._element, EVENT_SHOWN);
       };
-      const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
+      const capitalizedDimension =
+        dimension[0].toUpperCase() + dimension.slice(1);
       const scrollSize = `scroll${capitalizedDimension}`;
       this._queueCallback(complete, this._element, true);
       this._element.style[dimension] = `${this._element[scrollSize]}px`;
@@ -143,7 +172,8 @@
         return;
       }
       const dimension = this._getDimension();
-      this._element.style[dimension] = `${this._element.getBoundingClientRect()[dimension]}px`;
+      this._element.style[dimension] =
+        `${this._element.getBoundingClientRect()[dimension]}px`;
       index_js.reflow(this._element);
       this._element.classList.add(CLASS_NAME_COLLAPSING);
       this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW);
@@ -174,7 +204,9 @@
       return config;
     }
     _getDimension() {
-      return this._element.classList.contains(CLASS_NAME_HORIZONTAL) ? WIDTH : HEIGHT;
+      return this._element.classList.contains(CLASS_NAME_HORIZONTAL)
+        ? WIDTH
+        : HEIGHT;
     }
     _initializeChildren() {
       if (!this._config.parent) {
@@ -189,9 +221,14 @@
       }
     }
     _getFirstLevelChildren(selector) {
-      const children = SelectorEngine.find(CLASS_NAME_DEEPER_CHILDREN, this._config.parent);
+      const children = SelectorEngine.find(
+        CLASS_NAME_DEEPER_CHILDREN,
+        this._config.parent
+      );
       // remove children if greater depth
-      return SelectorEngine.find(selector, this._config.parent).filter(element => !children.includes(element));
+      return SelectorEngine.find(selector, this._config.parent).filter(
+        (element) => !children.includes(element)
+      );
     }
     _addAriaAndCollapsedClass(triggerArray, isOpen) {
       if (!triggerArray.length) {
@@ -225,17 +262,27 @@
    * Data API implementation
    */
 
-  EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
-    // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
-    if (event.target.tagName === 'A' || event.delegateTarget && event.delegateTarget.tagName === 'A') {
-      event.preventDefault();
+  EventHandler.on(
+    document,
+    EVENT_CLICK_DATA_API,
+    SELECTOR_DATA_TOGGLE,
+    function (event) {
+      // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
+      if (
+        event.target.tagName === 'A' ||
+        (event.delegateTarget && event.delegateTarget.tagName === 'A')
+      ) {
+        event.preventDefault();
+      }
+      for (const element of SelectorEngine.getMultipleElementsFromSelector(
+        this
+      )) {
+        Collapse.getOrCreateInstance(element, {
+          toggle: false,
+        }).toggle();
+      }
     }
-    for (const element of SelectorEngine.getMultipleElementsFromSelector(this)) {
-      Collapse.getOrCreateInstance(element, {
-        toggle: false
-      }).toggle();
-    }
-  });
+  );
 
   /**
    * jQuery
@@ -244,6 +291,5 @@
   index_js.defineJQueryPlugin(Collapse);
 
   return Collapse;
-
-}));
+});
 //# sourceMappingURL=collapse.js.map

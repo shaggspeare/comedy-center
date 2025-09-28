@@ -1,13 +1,29 @@
 /*!
-  * Bootstrap focustrap.js v5.3.1 (https://getbootstrap.com/)
-  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
-  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-  */
+ * Bootstrap focustrap.js v5.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('../dom/event-handler.js'), require('../dom/selector-engine.js'), require('./config.js')) :
-  typeof define === 'function' && define.amd ? define(['../dom/event-handler', '../dom/selector-engine', './config'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Focustrap = factory(global.EventHandler, global.SelectorEngine, global.Config));
-})(this, (function (EventHandler, SelectorEngine, Config) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined'
+    ? (module.exports = factory(
+        require('../dom/event-handler.js'),
+        require('../dom/selector-engine.js'),
+        require('./config.js')
+      ))
+    : typeof define === 'function' && define.amd
+      ? define(
+          ['../dom/event-handler', '../dom/selector-engine', './config'],
+          factory
+        )
+      : ((global =
+          typeof globalThis !== 'undefined' ? globalThis : global || self),
+        (global.Focustrap = factory(
+          global.EventHandler,
+          global.SelectorEngine,
+          global.Config
+        )));
+})(this, function (EventHandler, SelectorEngine, Config) {
+  'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -15,7 +31,6 @@
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
-
 
   /**
    * Constants
@@ -31,12 +46,12 @@
   const TAB_NAV_BACKWARD = 'backward';
   const Default = {
     autofocus: true,
-    trapElement: null // The element to trap focus inside of
+    trapElement: null, // The element to trap focus inside of
   };
 
   const DefaultType = {
     autofocus: 'boolean',
-    trapElement: 'element'
+    trapElement: 'element',
   };
 
   /**
@@ -71,8 +86,12 @@
         this._config.trapElement.focus();
       }
       EventHandler.off(document, EVENT_KEY); // guard against infinite focus loop
-      EventHandler.on(document, EVENT_FOCUSIN, event => this._handleFocusin(event));
-      EventHandler.on(document, EVENT_KEYDOWN_TAB, event => this._handleKeydown(event));
+      EventHandler.on(document, EVENT_FOCUSIN, (event) =>
+        this._handleFocusin(event)
+      );
+      EventHandler.on(document, EVENT_KEYDOWN_TAB, (event) =>
+        this._handleKeydown(event)
+      );
       this._isActive = true;
     }
     deactivate() {
@@ -85,10 +104,12 @@
 
     // Private
     _handleFocusin(event) {
-      const {
-        trapElement
-      } = this._config;
-      if (event.target === document || event.target === trapElement || trapElement.contains(event.target)) {
+      const { trapElement } = this._config;
+      if (
+        event.target === document ||
+        event.target === trapElement ||
+        trapElement.contains(event.target)
+      ) {
         return;
       }
       const elements = SelectorEngine.focusableChildren(trapElement);
@@ -104,11 +125,12 @@
       if (event.key !== TAB_KEY) {
         return;
       }
-      this._lastTabNavDirection = event.shiftKey ? TAB_NAV_BACKWARD : TAB_NAV_FORWARD;
+      this._lastTabNavDirection = event.shiftKey
+        ? TAB_NAV_BACKWARD
+        : TAB_NAV_FORWARD;
     }
   }
 
   return FocusTrap;
-
-}));
+});
 //# sourceMappingURL=focustrap.js.map

@@ -1,13 +1,26 @@
 /*!
-  * Bootstrap backdrop.js v5.3.1 (https://getbootstrap.com/)
-  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
-  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-  */
+ * Bootstrap backdrop.js v5.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('../dom/event-handler.js'), require('./config.js'), require('./index.js')) :
-  typeof define === 'function' && define.amd ? define(['../dom/event-handler', './config', './index'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Backdrop = factory(global.EventHandler, global.Config, global.Index));
-})(this, (function (EventHandler, Config, index_js) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined'
+    ? (module.exports = factory(
+        require('../dom/event-handler.js'),
+        require('./config.js'),
+        require('./index.js')
+      ))
+    : typeof define === 'function' && define.amd
+      ? define(['../dom/event-handler', './config', './index'], factory)
+      : ((global =
+          typeof globalThis !== 'undefined' ? globalThis : global || self),
+        (global.Backdrop = factory(
+          global.EventHandler,
+          global.Config,
+          global.Index
+        )));
+})(this, function (EventHandler, Config, index_js) {
+  'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -15,7 +28,6 @@
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
-
 
   /**
    * Constants
@@ -31,7 +43,7 @@
     isAnimated: false,
     isVisible: true,
     // if false, we use the backdrop helper without adding any element to the dom
-    rootElement: 'body' // give the choice to place backdrop under different elements
+    rootElement: 'body', // give the choice to place backdrop under different elements
   };
 
   const DefaultType = {
@@ -39,7 +51,7 @@
     clickCallback: '(function|null)',
     isAnimated: 'boolean',
     isVisible: 'boolean',
-    rootElement: '(element|string)'
+    rootElement: '(element|string)',
   };
 
   /**
@@ -130,11 +142,14 @@
       this._isAppended = true;
     }
     _emulateAnimation(callback) {
-      index_js.executeAfterTransition(callback, this._getElement(), this._config.isAnimated);
+      index_js.executeAfterTransition(
+        callback,
+        this._getElement(),
+        this._config.isAnimated
+      );
     }
   }
 
   return Backdrop;
-
-}));
+});
 //# sourceMappingURL=backdrop.js.map

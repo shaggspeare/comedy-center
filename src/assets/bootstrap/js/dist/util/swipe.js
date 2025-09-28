@@ -1,13 +1,26 @@
 /*!
-  * Bootstrap swipe.js v5.3.1 (https://getbootstrap.com/)
-  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
-  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-  */
+ * Bootstrap swipe.js v5.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('../dom/event-handler.js'), require('./config.js'), require('./index.js')) :
-  typeof define === 'function' && define.amd ? define(['../dom/event-handler', './config', './index'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Swipe = factory(global.EventHandler, global.Config, global.Index));
-})(this, (function (EventHandler, Config, index_js) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined'
+    ? (module.exports = factory(
+        require('../dom/event-handler.js'),
+        require('./config.js'),
+        require('./index.js')
+      ))
+    : typeof define === 'function' && define.amd
+      ? define(['../dom/event-handler', './config', './index'], factory)
+      : ((global =
+          typeof globalThis !== 'undefined' ? globalThis : global || self),
+        (global.Swipe = factory(
+          global.EventHandler,
+          global.Config,
+          global.Index
+        )));
+})(this, function (EventHandler, Config, index_js) {
+  'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -15,7 +28,6 @@
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
-
 
   /**
    * Constants
@@ -35,12 +47,12 @@
   const Default = {
     endCallback: null,
     leftCallback: null,
-    rightCallback: null
+    rightCallback: null,
   };
   const DefaultType = {
     endCallback: '(function|null)',
     leftCallback: '(function|null)',
-    rightCallback: '(function|null)'
+    rightCallback: '(function|null)',
   };
 
   /**
@@ -94,7 +106,10 @@
       index_js.execute(this._config.endCallback);
     }
     _move(event) {
-      this._deltaX = event.touches && event.touches.length > 1 ? 0 : event.touches[0].clientX - this._deltaX;
+      this._deltaX =
+        event.touches && event.touches.length > 1
+          ? 0
+          : event.touches[0].clientX - this._deltaX;
     }
     _handleSwipe() {
       const absDeltaX = Math.abs(this._deltaX);
@@ -106,30 +121,48 @@
       if (!direction) {
         return;
       }
-      index_js.execute(direction > 0 ? this._config.rightCallback : this._config.leftCallback);
+      index_js.execute(
+        direction > 0 ? this._config.rightCallback : this._config.leftCallback
+      );
     }
     _initEvents() {
       if (this._supportPointerEvents) {
-        EventHandler.on(this._element, EVENT_POINTERDOWN, event => this._start(event));
-        EventHandler.on(this._element, EVENT_POINTERUP, event => this._end(event));
+        EventHandler.on(this._element, EVENT_POINTERDOWN, (event) =>
+          this._start(event)
+        );
+        EventHandler.on(this._element, EVENT_POINTERUP, (event) =>
+          this._end(event)
+        );
         this._element.classList.add(CLASS_NAME_POINTER_EVENT);
       } else {
-        EventHandler.on(this._element, EVENT_TOUCHSTART, event => this._start(event));
-        EventHandler.on(this._element, EVENT_TOUCHMOVE, event => this._move(event));
-        EventHandler.on(this._element, EVENT_TOUCHEND, event => this._end(event));
+        EventHandler.on(this._element, EVENT_TOUCHSTART, (event) =>
+          this._start(event)
+        );
+        EventHandler.on(this._element, EVENT_TOUCHMOVE, (event) =>
+          this._move(event)
+        );
+        EventHandler.on(this._element, EVENT_TOUCHEND, (event) =>
+          this._end(event)
+        );
       }
     }
     _eventIsPointerPenTouch(event) {
-      return this._supportPointerEvents && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH);
+      return (
+        this._supportPointerEvents &&
+        (event.pointerType === POINTER_TYPE_PEN ||
+          event.pointerType === POINTER_TYPE_TOUCH)
+      );
     }
 
     // Static
     static isSupported() {
-      return 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0;
+      return (
+        'ontouchstart' in document.documentElement ||
+        navigator.maxTouchPoints > 0
+      );
     }
   }
 
   return Swipe;
-
-}));
+});
 //# sourceMappingURL=swipe.js.map
