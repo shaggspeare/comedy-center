@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Loading = () => {
+const Loading: React.FC = () => {
   return (
     <section className="loading-section py-50 py-lg-100 py-xxl-120">
       <div className="container">

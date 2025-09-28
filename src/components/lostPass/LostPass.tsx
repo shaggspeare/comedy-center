@@ -3,7 +3,7 @@ import React from 'react';
 import LostPassImg from '@/assets/images/gallery-6.jpg';
 import Link from 'next/link';
 
-const LostPass = () => {
+const LostPass: React.FC = () => {
   return (
     <section className="section-register section-lost-password py-60 py-lg-90">
       <div className="container">

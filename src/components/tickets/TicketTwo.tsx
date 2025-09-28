@@ -2,7 +2,7 @@ import React from 'react';
 import ButtonCustom from '@/components/common/buttons/ButtonCustom';
 import TicketIcon from '@/components/common/icons/TicketIcon';
 
-const TicketTwo = () => {
+const TicketTwo: React.FC = () => {
   return (
     <section className="ticket-section about-ticket pt-50 pt-lg-100 pt-xxl-130">
       <div className="container">

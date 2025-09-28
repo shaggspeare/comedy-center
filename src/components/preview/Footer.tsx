@@ -3,8 +3,8 @@ import Link from 'next/link';
 import React from 'react';
 import logo from '@/assets/images/global/logo-landing-light.png';
 import logo_dark from '@/assets/images/global/logo-secondary.png';
-const Footer = () => {
-  const year = new Date().getFullYear();
+const Footer: React.FC = () => {
+  const year: number = new Date().getFullYear();
   return (
     <footer className="footer-section footer-1 py-lg-50 py-40 mt-auto">
       <div className="container">

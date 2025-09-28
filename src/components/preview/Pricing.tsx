@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Pricing = () => {
+const Pricing: React.FC = () => {
   return (
     <section id="pricing" className="pricing-section pricing-landing">
       <div className="container">
@@ -48,7 +48,7 @@ const Pricing = () => {
 
 export default Pricing;
 
-const CheckIcon = () => {
+const CheckIcon: React.FC = () => {
   return (
     <span className="check-circle-fill">
       <svg height={'28'} width={'28'}>

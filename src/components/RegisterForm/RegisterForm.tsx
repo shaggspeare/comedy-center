@@ -3,7 +3,7 @@ import React from 'react';
 import RegiImg from '@/assets/images/gallery-6.jpg';
 import Link from 'next/link';
 
-const RegisterForm = () => {
+const RegisterForm: React.FC = () => {
   return (
     <section className="section-register py-60 py-lg-90">
       <div className="container">

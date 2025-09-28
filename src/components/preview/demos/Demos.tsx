@@ -66,7 +66,14 @@ const demoData = [
     img: demo_rtl,
   },
 ];
-const Demos = () => {
+interface DemoData {
+  id: number;
+  name: string;
+  link: string;
+  img: any;
+}
+
+const Demos: React.FC = () => {
   return (
     <section id="demos" className="demos pb-50 pb-lg-100 text-center">
       <div className="container">

@@ -11,8 +11,12 @@ import SectionTitleTwo from '@/components/common/sectionTitle/SectionTitleTwo';
 import RightArrow from '@/components/common/icons/RightArrow';
 import ellipse_2 from '@/assets/images/home-1/ellipse-2.png';
 
-const SubscriptionOne = ({ styleNum }) => {
-  const [el, seEl] = useState('');
+interface SubscriptionOneProps {
+  styleNum: number;
+}
+
+const SubscriptionOne: React.FC<SubscriptionOneProps> = ({ styleNum }) => {
+  const [el, seEl] = useState<boolean | string>('');
 
   // styleNum 0 from home page 1 and home page 2
   // styleNum 1 from home page 3 and blog page
@@ -22,19 +26,19 @@ const SubscriptionOne = ({ styleNum }) => {
   // styleNum 5 from single blog 1, 2, 3
 
   // ----- Change classname define in home page
-  let prentClass;
-  let subscriptionWapperClass;
-  let dotImg;
-  let sectionDescClass;
-  let directionBtn;
-  let markerClr;
-  let sectionWapperClass;
-  let sectionName;
-  let subTitle2;
-  let subTitleClass;
-  let titleClass;
-  let addressClassName;
-  let addressClass;
+  let prentClass: string;
+  let subscriptionWapperClass: string;
+  let dotImg: boolean;
+  let sectionDescClass: string;
+  let directionBtn: string;
+  let markerClr: string;
+  let sectionWapperClass: string;
+  let sectionName: boolean;
+  let subTitle2: boolean;
+  let subTitleClass: string;
+  let titleClass: string;
+  let addressClassName: string;
+  let addressClass: string;
 
   switch (styleNum) {
     case 0:
@@ -219,7 +223,7 @@ const SubscriptionOne = ({ styleNum }) => {
 
 export default SubscriptionOne;
 
-const SubscriptionFormArrow = () => {
+const SubscriptionFormArrow: React.FC = () => {
   return (
     <svg width="37" height="38">
       <use xlinkHref="#subscription-form-arrow">

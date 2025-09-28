@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { hallList } from '@/lib/hallList';
 
-const ConferenceHall = () => {
+const ConferenceHall: React.FC = () => {
   return (
     <section
       id="commanders"

@@ -8,7 +8,7 @@ import landing_image_5 from '@/assets/images/hero-landing-image-5.png';
 import landing_image_4 from '@/assets/images/hero-landing-image-4.png';
 import landing_image_3 from '@/assets/images/hero-landing-image-3.png';
 
-const Banner = () => {
+const Banner: React.FC = () => {
   return (
     <section id="hero-landing" className="hero-section hero-landing parallax">
       <div className="container">
@@ -78,7 +78,7 @@ const Banner = () => {
 
 export default Banner;
 
-const CheckIcon = () => {
+const CheckIcon: React.FC = () => {
   return (
     <span className="check-circle-fill">
       <svg height={'28'} width={'28'}>

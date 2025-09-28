@@ -6,8 +6,12 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import MapRouting from './MapRouting';
 // import Routing from './leafletRouting'
 
-const LeafletMap = ({ el }) => {
-  const locationLatLng = [30.415075, -86.658633];
+interface LeafletMapProps {
+  el?: boolean;
+}
+
+const LeafletMap: React.FC<LeafletMapProps> = ({ el }) => {
+  const locationLatLng: [number, number] = [30.415075, -86.658633];
   return (
     <MapContainer
       center={locationLatLng}

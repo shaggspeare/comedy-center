@@ -15,15 +15,19 @@ import SectionTitleTwo from '@/components/common/sectionTitle/SectionTitleTwo';
 import ellipse_1 from '@/assets/images/home-1/ellipse-1.png';
 import { sponsorData } from '@/lib/sponsorData';
 
-const SponsorSlider = ({ styleNum }) => {
+interface SponsorSliderProps {
+  styleNum: number;
+}
+
+const SponsorSlider: React.FC<SponsorSliderProps> = ({ styleNum }) => {
   // styleNum 0 from home page 1 and home page 2
   // styleNum 1 from home page 5
   // styleNum 2 from home page 7
 
   // ----- Change classname define in home page
-  let sectionDescClass;
-  let sponsorBtn;
-  let subTitle2;
+  let sectionDescClass: string;
+  let sponsorBtn: string;
+  let subTitle2: boolean;
   switch (styleNum) {
     case 0:
       sectionDescClass = 'text-lg-end';

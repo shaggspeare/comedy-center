@@ -2,7 +2,14 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const DemoCard = ({ img, name, link, id }) => {
+interface DemoCardProps {
+  img: any;
+  name: string;
+  link: string;
+  id: number;
+}
+
+const DemoCard: React.FC<DemoCardProps> = ({ img, name, link, id }) => {
   return (
     <div
       className="col-md-6 col-lg-4 "
@@ -41,7 +48,7 @@ const DemoCard = ({ img, name, link, id }) => {
 
 export default DemoCard;
 
-const DotIcon = () => {
+const DotIcon: React.FC = () => {
   return (
     <span className="circle-dot">
       <svg width="9" height="9">

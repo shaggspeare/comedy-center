@@ -23,15 +23,19 @@ import ticket_icon_1 from '@/assets/images/home-1/ticket-icon-1.png';
 import ticket_icon_2 from '@/assets/images/home-1/ticket-icon-2.png';
 import ticket_icon_3 from '@/assets/images/home-1/ticket-icon-3.png';
 
-const TicketOne = ({ styleNum }) => {
+interface TicketOneProps {
+  styleNum: number;
+}
+
+const TicketOne: React.FC<TicketOneProps> = ({ styleNum }) => {
   // styleNum 1 from home page 1
   // styleNum 5 from home page 5
   // styleNum 7 from home page 7
 
   // ----- Change classname define in home page
-  let prantClass;
-  let subTitleClass;
-  let subTitle2;
+  let prantClass: string;
+  let subTitleClass: string;
+  let subTitle2: boolean;
   switch (styleNum) {
     case 1:
       prantClass = 'pb-40 pb-lg-60 pb-xl-80 pt-300 pt-md-150 pt-lg-180';

@@ -65,7 +65,14 @@ const innerData = [
     img: event_single,
   },
 ];
-const InnerPages = () => {
+interface InnerData {
+  id: number;
+  name: string;
+  link: string;
+  img: any;
+}
+
+const InnerPages: React.FC = () => {
   return (
     <section id="inner-pages" className="demos pb-50 pb-lg-100 text-center">
       <div className="container">

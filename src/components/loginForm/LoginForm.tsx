@@ -3,7 +3,7 @@ import React from 'react';
 import LoginImg from '@/assets/images/hero-4.jpg';
 import Link from 'next/link';
 
-const LoginForm = () => {
+const LoginForm: React.FC = () => {
   return (
     <section className="section-register section-login py-60 py-lg-90">
       <div className="container">

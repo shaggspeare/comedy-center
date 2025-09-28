@@ -5,7 +5,7 @@ import useStickyHeader from '@/hooks/useStickyHeader';
 
 import logo_light from '@/assets/images/global/logo-landing-light.png';
 import logo_secondary from '@/assets/images/global/logo-secondary.png';
-const Navbar = () => {
+const Navbar: React.FC = () => {
   useStickyHeader();
   return (
     <>

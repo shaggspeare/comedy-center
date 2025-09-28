@@ -61,7 +61,15 @@ const featuresData = [
   },
 ];
 
-const Features = () => {
+interface FeatureData {
+  id: number;
+  title: string;
+  desc: string;
+  circle: any;
+  img: any;
+}
+
+const Features: React.FC = () => {
   return (
     <section
       id="features"
@@ -120,7 +128,14 @@ const Features = () => {
 
 export default Features;
 
-const FeatureCard = ({ circle, desc, img, title }) => {
+interface FeatureCardProps {
+  circle: any;
+  desc: string;
+  img: any;
+  title: string;
+}
+
+const FeatureCard: React.FC<FeatureCardProps> = ({ circle, desc, img, title }) => {
   return (
     <div className="features-inner">
       <div className="features-image mb-20">

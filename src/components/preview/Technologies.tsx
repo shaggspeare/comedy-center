@@ -10,7 +10,7 @@ import technologies_md from '@/assets/images/technologies-md-image.png';
 import technologies_md_2 from '@/assets/images/technologies-md-image-2.png';
 import technologies_img from '@/assets/images/technologies-lg-image.png';
 
-const Technologies = () => {
+const Technologies: React.FC = () => {
   return (
     <section
       id="technologies"
@@ -77,7 +77,12 @@ const Technologies = () => {
 
 export default Technologies;
 
-const SmallCard = ({ img, title }) => {
+interface SmallCardProps {
+  img: any;
+  title: string;
+}
+
+const SmallCard: React.FC<SmallCardProps> = ({ img, title }) => {
   return (
     <div className="technologies-wrapper landing-inner-bg technologies-sm d-flex flex-column gap-3 gap-lg-20 align-items-center justify-content-center">
       <Image src={img} className="technologies_img" alt="img" />
@@ -86,7 +91,13 @@ const SmallCard = ({ img, title }) => {
   );
 };
 
-const MediumCard = ({ img, title, subtitle }) => {
+interface MediumCardProps {
+  img: any;
+  title: string;
+  subtitle: string;
+}
+
+const MediumCard: React.FC<MediumCardProps> = ({ img, title, subtitle }) => {
   return (
     <div className="technologies-wrapper landing-inner-bg technologies-md">
       <Image src={img} className="img-fluid" alt="img" />

@@ -5,7 +5,7 @@ import EventCard from '../common/cards/EventCard';
 import { eventsData } from '@/lib/eventsData';
 import Pagination from '../common/Pagination';
 
-const EventListing = () => {
+const EventListing: React.FC = () => {
   return (
     <section className="blog-content-section py-50 py-lg-80 py-xxl-100">
       <div className="container col-xxl-10">

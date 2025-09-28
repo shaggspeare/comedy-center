@@ -7,7 +7,7 @@ import SectionDesc from '@/components/common/sectionTitle/SectionDesc';
 import SectionTitleTwo from '@/components/common/sectionTitle/SectionTitleTwo';
 import { SponsorData2 } from '@/lib/sponsorData2';
 
-const Sponsor = () => {
+const Sponsor: React.FC = () => {
   return (
     <section
       id="sponsor"

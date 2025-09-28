@@ -10,7 +10,11 @@ import ShopCard from '@/components/common/cards/ShopCard';
 import SectionTitleTwo from '@/components/common/sectionTitle/SectionTitleTwo';
 import { productData } from '@/lib/productsData';
 
-const Shop = ({ dotsImage }) => {
+interface ShopProps {
+  dotsImage: any;
+}
+
+const Shop: React.FC<ShopProps> = ({ dotsImage }) => {
   return (
     <section
       id="merchandise"
