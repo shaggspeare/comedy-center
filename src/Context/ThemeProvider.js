@@ -16,10 +16,10 @@ export const ThemeProvider = ({ children }) => {
         // document.documentElement.setAttribute("data-bs-theme", darkMode ? "dark" : "light")
 
         // add dark and light mode base on path Name
-        if (pathName === "/" || pathName === "/home-4/" || pathName === "/home-1/" || pathName === "/home-2/" || pathName === "/home-5/" || pathName === "/home-6/" || pathName === "/home-7/" || pathName === "/home-8/" || pathName === "/venue/" || pathName === "/contact-us/" || pathName === "/about-us/" || pathName === "/blog-single-3/" || pathName === "/event-single/" || pathName === "/login/" || pathName === "/register/" || pathName === "/lost-password/") {
+        if (pathName === "/" || pathName === "/home-3/" || pathName === "/home-4/" || pathName === "/home-1/" || pathName === "/home-2/" || pathName === "/home-5/" || pathName === "/home-6/" || pathName === "/home-7/" || pathName === "/home-8/" || pathName === "/venue/" || pathName === "/contact-us/" || pathName === "/about-us/" || pathName === "/blog-single-3/" || pathName === "/event-single/" || pathName === "/login/" || pathName === "/register/" || pathName === "/lost-password/") {
             document.documentElement.setAttribute("data-bs-theme", "dark")
         }
-        else if (pathName === "/home-3/" || pathName === "/blog/" || pathName === "/blog-single-1/" || pathName === "/blog-single-2/") {
+        else if ( pathName === "/blog/" || pathName === "/blog-single-1/" || pathName === "/blog-single-2/") {
             document.documentElement.setAttribute("data-bs-theme", "light")
         }
 

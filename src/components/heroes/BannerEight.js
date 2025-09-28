@@ -12,7 +12,7 @@ import musicfest_2 from "@/assets/images/global/musicfest-2.png"
 const BannerEight = () => {
     return (
         <section className="hero-section hero-8 hero-video bg-dark position-relative">
-            <div class="video-wrapper position-absolute w-100 h-100 top-0 start-0 z-0">
+            <div className="video-wrapper position-absolute w-100 h-100 top-0 start-0 z-0">
                 <VideoBg/>
             </div>
             <div className="hero-wrapper mx-auto position-relative">
