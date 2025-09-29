@@ -1,6 +1,14 @@
 {
   "permissions": {
-    "allow": ["Bash(mv:*)", "Bash(npm install:*)", "Bash(npm run prettier:*)"],
+    "allow": [
+      "Bash(mv:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run prettier:*)",
+      "Bash(npm outdated)",
+      "Bash(npm show:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run type-check:*)"
+    ],
     "deny": [],
     "ask": []
   }

@@ -1,11 +1,11 @@
 import React from 'react';
-import NavbarOne from '@/components/common/navbars/NavbarOne';
 import FooterOne from '@/components/common/footers/FooterOne';
+import NavbarEight from '@/components/common/navbars/NavbarEight';
 
 const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
     <>
-      <NavbarOne />
+      <NavbarEight />
       {children}
       <FooterOne />
     </>

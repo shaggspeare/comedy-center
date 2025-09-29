@@ -11,11 +11,13 @@ import BannerEight from '@/components/heroes/BannerEight';
 import LineupSeven from '@/components/lineups/LineupSeven';
 import Direction from '@/components/direction/Direction';
 
-export const metadata = {
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
   title: 'Eventiva next.js - Home1',
   description: 'Eventiva next.js multipage website with next.js and bootstrap',
 };
-const Home1 = () => {
+const Home1 = (): JSX.Element => {
   return (
     <>
       <BannerEight />
